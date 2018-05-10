@@ -6,6 +6,10 @@ from .forms import ArtistForm, SongForm
 
 
 def artists(request):
+    # validate that user is authenticated, and if not, redirect to login page
+    if not request.user.is_authenticated:
+        return redirect('login')
+        
     pass
 
 
