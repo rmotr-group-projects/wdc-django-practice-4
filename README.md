@@ -21,6 +21,12 @@ The goal for this practice is to keep working with forms, but in this case we'll
 
 If you run the development server with `$ make runserver`, you'll be able to test the project in the browser pointing to the URL that Cloud9 provides to you.
 
+You can load some initial data into your database by running this script that we provide to you:
+
+```bash
+$ make load_initial_data
+```
+
 
 #### Part 1 - Working with Basic Django Forms
 
