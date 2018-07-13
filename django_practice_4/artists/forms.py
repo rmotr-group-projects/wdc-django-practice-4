@@ -7,5 +7,5 @@ class ArtistForm(forms.Form):
     pass
 
 
-class SongForm(forms.ModelForm):
+class SongForm(forms.Form):
     pass
