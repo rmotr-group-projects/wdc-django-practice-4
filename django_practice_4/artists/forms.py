@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import GENRE_CHOICES, Song
+from .models import GENRE_CHOICES, Artist
 
 
 class ArtistForm(forms.Form):
@@ -12,7 +12,7 @@ class ArtistForm(forms.Form):
     genre = forms.ChoiceField(label='Genre', choices=GENRE_CHOICES, required=False)
 
 
-class SongForm(forms.ModelForm):
-    class Meta:
-        model = Song
-        fields = ['artist', 'title', 'album_name']
+class SongForm(forms.Form):
+    artist = forms.ModelChoiceField(queryset=Artist.objects.all())
+    title = forms.CharField(label='Title', max_length=200)
+    album_name = forms.CharField(label='Album name', max_length=200)

@@ -19,7 +19,7 @@ def artists(request):
             Artist.objects.create(**artist_form.cleaned_data)
             artist_form = ArtistForm()
         elif song_form.is_valid():
-            song_form.save()
+            Song.objects.create(**song_form.cleaned_data)
             song_form = SongForm()
     else:
         artist_form = ArtistForm()

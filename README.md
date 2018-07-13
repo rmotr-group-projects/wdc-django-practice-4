@@ -53,12 +53,3 @@ You will have to handle both `GET` and `POST` requests in the same `artists` vie
 - If 'request.method == POST', you make an instance of the form with the data that comes in request.POST, and then, if the form is valid, create the proper Artist object with the provided values.
 
 In `templates/index.html` you'll have to render the form that you sent as context in the same way you render any other object (with `{{ form_name }}`). This will build for you all the inputs related to the form and render them as HTML code.
-
-
-#### Part 2 - Working with Django ModelForms
-
-In this case the idea is to reply the form in charge of adding a new Song, but this time using a [Django ModelForm](https://docs.djangoproject.com/en/2.0/topics/forms/modelforms/).
-
-The model form must be also implemented in `artists/forms.py` and the logic that handles the song creation will be once again inside `artists` view.
-
-The view will keep working in the same way as before for either GET or POST requests, but now it have to handle two forms at the same time. One of the differences between the Model Form used in this part is that you don't need to create the Song object by hand. You can just `.save()` your form once you're sure that provided data is valid, and it will create the object in the database for you.
