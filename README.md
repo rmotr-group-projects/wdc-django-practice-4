@@ -53,3 +53,15 @@ You will have to handle both `GET` and `POST` requests in the same `artists` vie
 - If 'request.method == POST', you make an instance of the form with the data that comes in request.POST, and then, if the form is valid, create the proper Artist object with the provided values.
 
 In `templates/index.html` you'll have to render the form that you sent as context in the same way you render any other object (with `{{ form_name }}`). This will build for you all the inputs related to the form and render them as HTML code.
+
+
+#### Part 2 - ORM exercises
+
+For this part of the practice you will work inside the `artists/orm_exercises.py` file. You'll find there a couple of functions that are the tasks you have to implement, using the different ORM methods that are provided by the Django `objects` manager.
+Each of the task has its instructions as a docstring, so use them as a guide to know what you have to do.
+
+In order to check if you implemented them correctly, there are tests associated to each task inside the `artists/tests.py`. You can run the tests like this:
+
+```bash
+$ make test
+```
