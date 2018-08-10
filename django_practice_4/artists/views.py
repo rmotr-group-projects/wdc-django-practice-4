@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseNotFound
+from django.contrib import messages
 
 from .models import Artist, Song
 from .forms import ArtistForm, SongForm
@@ -10,7 +11,31 @@ def artists(request):
     if not request.user.is_authenticated:
         return redirect('login')
         
-    pass
+    if request.method == 'GET':
+        artist_form = ArtistForm()
+        song_form = SongForm()
+        return render(request, 'index.html', context={
+            'artist_form': artist_form,
+            'song_form': song_form
+        })
+        
+    elif request.method == 'POST':
+        if 'add_song' in request.POST:
+            print('add song if')
+            new_song = SongForm(request.POST)
+            if new_song.is_valid():
+                new_song.save()
+            messages.success(request, 'Song has been added!')
+            print(messages)
+                
+        if 'add_artist' in request.POST:
+            new_artist = ArtistForm(request.POST)
+            if new_artist.is_valid():
+                new_artist.save()
+            messages.success(request, 'Artist has been added!')
+            print(messages)
+                
+    return redirect('artists')
 
 
 def delete_song(request):

@@ -8,17 +8,31 @@
     form.inline{
       display: inline;
     }
+    .messages{
+      color: green;
+    }
+    
   </style>
 </head>
 <body>
+  
+  {% if messages %}
+  <h3 class='messages'>
+    {% for message in messages %}
+      {{ message }} <br>
+    {% endfor %}
+  </h3>
+  {% endif %}
   <!-- Create Song form -->
   <h3>Add a new Song</h3>
   <form action="{% url 'artists' %}" method='POST'>
     {% csrf_token %}
-
+    <table>
     <!-- Render here your 'Add a new Song' form -->
-
-    <input type="submit" value="Add Song">
+    
+    {{ song_form.as_table }}
+    </table>
+    <input name='add_song' type="submit" value="Add Song">
   </form>
   <hr>
 
@@ -28,8 +42,10 @@
     {% csrf_token %}
     
     <!-- Render here your 'Add a new Artist' form -->
-
-    <input type="submit" value="Add Artist">
+    <table>
+    {{ artist_form.as_table }}
+    </table>
+    <input name='add_artist' type="submit" value="Add Artist">
   </form>
   <hr>
 

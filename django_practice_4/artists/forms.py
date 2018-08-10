@@ -1,11 +1,15 @@
 from django import forms
 
-from .models import GENRE_CHOICES, Song
+from .models import GENRE_CHOICES, Song, Artist
 
 
-class ArtistForm(forms.Form):
-    pass
+class ArtistForm(forms.ModelForm):
+    class Meta:
+        model = Artist
+        fields = '__all__'
 
 
-class SongForm(forms.Form):
-    pass
+class SongForm(forms.ModelForm):
+    class Meta:
+        model = Song
+        fields = '__all__'
