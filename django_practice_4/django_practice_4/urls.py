@@ -22,8 +22,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # authentication URLs using Django built-in views
-    path('login/', auth_views.login, name='login'),
-    path('logout/', auth_views.logout, name='logout'),
+    path('login/', auth_views.login, {
+        'template_name': 'registration/login.html'
+    }, name='login'),
+    path('logout/', auth_views.logout, {'next_page': '/'}, name='logout'),
 
     path('artists/', views.artists, name='artists'),
     path('delete-song/', views.delete_song, name='delete_song'),
