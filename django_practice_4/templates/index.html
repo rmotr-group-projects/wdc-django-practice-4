@@ -10,12 +10,28 @@
     }
   </style>
 </head>
+
 <body>
+  <div style='text-align: right'>
+
+    {% if request.user.is_authenticated %}
+      <p>
+        Welcome <b>{{request.user.username}}</b>! <br>
+        <a href="{% url 'logout'%}">Logout</a>
+      </p>
+    {% else %}
+      <p><a href="{% url 'login'%}">Login</a></p>
+    {% endif %}
+
+  </div>
+  
+  <h1>Welcome to our Playlist!</h1>
+
   <!-- Create Song form -->
   <h3>Add a new Song</h3>
   <form action="{% url 'artists' %}" method='POST'>
     {% csrf_token %}
-
+    {{ song_form.as_p }}
     <!-- Render here your 'Add a new Song' form -->
 
     <input type="submit" value="Add Song">
@@ -26,8 +42,9 @@
   <h3>Add a new Artist</h3>
   <form action="{% url 'artists' %}" method='POST'>
     {% csrf_token %}
-    
+    {{ artist_form.as_p }}
     <!-- Render here your 'Add a new Artist' form -->
+
 
     <input type="submit" value="Add Artist">
   </form>
