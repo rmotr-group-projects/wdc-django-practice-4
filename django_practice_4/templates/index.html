@@ -25,10 +25,9 @@
   <!-- Create Artist form -->
   <h3>Add a new Artist</h3>
   <form action="{% url 'artists' %}" method='POST'>
-    {% csrf_token %}
-    
-    <!-- Render here your 'Add a new Artist' form -->
-
+    {% csrf_token %}   
+    <!-- 'Add a new Artist' form -->
+    {{ add_artist_form.as_p }}
     <input type="submit" value="Add Artist">
   </form>
   <hr>
