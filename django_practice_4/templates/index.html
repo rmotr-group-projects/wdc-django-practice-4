@@ -15,9 +15,9 @@
   <h3>Add a new Song</h3>
   <form action="{% url 'artists' %}" method='POST'>
     {% csrf_token %}
-
-    <!-- Render here your 'Add a new Song' form -->
-
+    <!-- 'Add a new Song' form -->
+    {{ add_song_form.as_p }}
+    <input type="hidden" name="object_to_add" value="song">
     <input type="submit" value="Add Song">
   </form>
   <hr>
@@ -28,6 +28,7 @@
     {% csrf_token %}   
     <!-- 'Add a new Artist' form -->
     {{ add_artist_form.as_p }}
+    <input type="hidden" name="object_to_add" value="artist">
     <input type="submit" value="Add Artist">
   </form>
   <hr>

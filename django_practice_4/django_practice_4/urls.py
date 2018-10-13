@@ -15,6 +15,8 @@ Including another URLconf
 from django.urls import path
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
+from django.urls import include, path
+from django.conf import settings
 
 from artists import views
 
@@ -29,3 +31,9 @@ urlpatterns = [
     path('delete-song/', views.delete_song, name='delete_song'),
     path('delete-artist/', views.delete_artist, name='delete_artist'),
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        path('__debug__/', include(debug_toolbar.urls)), 
+    ] + urlpatterns 
