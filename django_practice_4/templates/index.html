@@ -18,7 +18,9 @@
   <form action="{% url 'create_song' %}" method='POST'>
     {% csrf_token %}
     <!-- Render here your 'Add a new Song' form -->
-    {{ song_form.as_p }}
+    <table>
+    {{ song_form.as_table }}
+  </table>
     <input type="submit" value="Add Song">
   </form>
     <hr>
@@ -28,8 +30,9 @@
     <form action="{% url 'artists' %}" method='POST'>
       {% csrf_token %}
       <!-- Render here your 'Add a new Artist' form -->
-      {{ artist_form.as_p }}
-
+      <table>
+      {{ artist_form.as_table }}
+      </table>
       <input type="submit" value="Add Artist">
   </form>
       <hr>

@@ -53,7 +53,6 @@ def artists(request):
 
 
 def create_song(request):
-    artist = request.POST['artist']
     artist_id = request.POST['artist']
     title = request.POST['title']
     album_name = request.POST.get('album_name', '')
@@ -68,14 +67,6 @@ def create_song(request):
 
     Song.objects.create(artist=artist, title=title, album_name=album_name)
     return redirect('artists')
-    # return render(request, 'index.html', {
-    #     'artist': artist,
-    #     'title': title,
-    #     'album_name': album_name
-    #     # 'artists': artists,
-    #     # 'artist_form': artist_form,
-    #     # 'song_form': song_form,
-    # })
 
 
 def delete_song(request):

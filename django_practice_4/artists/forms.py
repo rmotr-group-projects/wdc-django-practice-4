@@ -13,6 +13,6 @@ class ArtistForm(forms.Form):
 
 
 class SongForm(forms.Form):
+    artist = forms.ModelChoiceField(queryset=Artist.objects.all())
     title = forms.CharField(label='Title', max_length=100)
     album_name = forms.CharField(label='Album Name', max_length=100)
-    artist = forms.ModelChoiceField(queryset=Artist.objects.all())
