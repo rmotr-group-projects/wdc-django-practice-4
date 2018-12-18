@@ -5,7 +5,7 @@
     <title></title>
   </head>
   <body>
-    <form class="" action="" method="post">
+    <form class="" action="{% url 'artists' %}" method="post">
       {% csrf_token %}
       {{ form.as_p }}
 
